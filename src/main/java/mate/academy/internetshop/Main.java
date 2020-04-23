@@ -1,39 +1,39 @@
 package mate.academy.internetshop;
 
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Item;
-import mate.academy.internetshop.service.ItemService;
+import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.service.ProductService;
 
 public class Main {
     public static void main(String[] args) {
-        ItemService service =
-                (ItemService) Injector.getInstance("mate.academy.internetshop")
-                .getInstance(ItemService.class);
+        ProductService service =
+                (ProductService) Injector.getInstance("mate.academy.internetshop")
+                .getInstance(ProductService.class);
 
-        service.create(new Item("Water", 15.0, 5));
-        service.create(new Item("Tea", 25.0, 1));
-        service.create(new Item("Coffee", 50.0, 10));
+        service.create(new Product("Water", 15.0, 5));
+        service.create(new Product("Tea", 25.0, 1));
+        service.create(new Product("Coffee", 50.0, 10));
 
-        System.out.println("Created items: ");
+        System.out.println("Created products: ");
         service.getAll().forEach(System.out::println);
 
-        System.out.println("Item with id 1: ");
-        Item item = service.get(1L);
-        System.out.println(item);
+        System.out.println("Product with id 1: ");
+        Product product = service.get(1L);
+        System.out.println(product);
 
-        item.setCount(0);
-        service.update(item);
-        System.out.println("Item with id 1 after update: ");
+        product.setCount(0);
+        service.update(product);
+        System.out.println("Product with id 1 after update: ");
         System.out.println(service.get(1L));
 
-        System.out.println("Available items: ");
+        System.out.println("Available products: ");
         service.getAllAvailable().forEach(System.out::println);
 
-        System.out.println("All items before delete: ");
+        System.out.println("All products before delete: ");
         service.getAll().forEach(System.out::println);
-        System.out.println("Item with id 1 deleted.");
+        System.out.println("Product with id 1 deleted.");
         service.delete(1L);
-        System.out.println("All items after delete: ");
+        System.out.println("All products after delete: ");
         service.getAll().forEach(System.out::println);
     }
 }

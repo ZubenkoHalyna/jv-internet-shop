@@ -1,14 +1,14 @@
 package mate.academy.internetshop.model;
 
-public class Item {
+public class Product {
     private Long id;
     private String name;
     private Double price;
     private int count;
 
-    public Item(String itemName, Double itemPrice, int initialCount) {
-        name = itemName;
-        price = itemPrice;
+    public Product(String productName, Double productPrice, int initialCount) {
+        name = productName;
+        price = productPrice;
         count = initialCount;
     }
 
