@@ -8,7 +8,7 @@ public class Storage {
     public static final List<Product> products = new ArrayList<>();
     private static long productsCount = 0;
 
-    public static Product addNewItem(Product product) {
+    public static Product addNewProduct(Product product) {
         product.setId(productsCount);
         productsCount++;
         products.add(product);
