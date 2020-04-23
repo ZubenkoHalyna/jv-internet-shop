@@ -6,12 +6,10 @@ public class Product {
     private Long id;
     private String name;
     private BigDecimal price;
-    private int count;
 
-    public Product(String productName, BigDecimal productPrice, int initialCount) {
+    public Product(String productName, BigDecimal productPrice) {
         name = productName;
         price = productPrice;
-        count = initialCount;
     }
 
     @Override
@@ -20,7 +18,6 @@ public class Product {
                 + "id=" + id
                 + ", name='" + name + '\''
                 + ", price=" + price
-                + ", count=" + count
                 + '}';
     }
 
@@ -46,13 +43,5 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 }

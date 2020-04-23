@@ -10,8 +10,6 @@ public interface ProductService {
 
     List<Product> getAll();
 
-    List<Product> getAllAvailable();
-
     Product update(Product product);
 
     boolean delete(Long id);
