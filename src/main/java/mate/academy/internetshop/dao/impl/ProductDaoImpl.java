@@ -1,8 +1,8 @@
-package mate.academy.internetshop.db.impl;
+package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
-import mate.academy.internetshop.db.ProductDao;
+import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Product;

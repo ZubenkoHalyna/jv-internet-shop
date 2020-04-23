@@ -1,4 +1,4 @@
-package mate.academy.internetshop.db;
+package mate.academy.internetshop.dao;
 
 import java.util.List;
 import java.util.Optional;
