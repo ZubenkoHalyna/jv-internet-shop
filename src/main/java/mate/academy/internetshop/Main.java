@@ -1,5 +1,6 @@
 package mate.academy.internetshop;
 
+import java.math.BigDecimal;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
@@ -10,9 +11,9 @@ public class Main {
                 (ProductService) Injector.getInstance("mate.academy.internetshop")
                 .getInstance(ProductService.class);
 
-        service.create(new Product("Water", 15.0, 5));
-        service.create(new Product("Tea", 25.0, 1));
-        service.create(new Product("Coffee", 50.0, 10));
+        service.create(new Product("Water", new BigDecimal(15), 5));
+        service.create(new Product("Tea", new BigDecimal(25.5), 1));
+        service.create(new Product("Coffee", new BigDecimal(50), 10));
 
         System.out.println("Created products: ");
         service.getAll().forEach(System.out::println);
