@@ -3,19 +3,19 @@ package mate.academy.internetshop.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class ShoppingCart {
     private Long id;
     private List<Product> products;
     private User user;
 
-    public Order(List<Product> products, User user) {
+    public ShoppingCart(List<Product> products, User user) {
         this.products = new ArrayList<>(products);
         this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Order{"
+        return "ShoppingCart{"
                 + "id=" + id
                 + ", products=" + products
                 + ", user=" + user
@@ -30,19 +30,19 @@ public class Order {
         this.id = id;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
