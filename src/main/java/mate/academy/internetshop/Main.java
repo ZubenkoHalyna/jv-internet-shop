@@ -55,6 +55,8 @@ public class Main {
         ShoppingCart shoppingCart = new ShoppingCart(List.of(), user);
         shoppingCartService.addProduct(shoppingCart, productService.get(0L));
         shoppingCartService.addProduct(shoppingCart, productService.get(1L));
+        shoppingCartService.addProduct(new ShoppingCart(List.of(), userService.get(2L)),
+                productService.get(0L));
         System.out.println("ShoppingCart created: ");
         System.out.println(shoppingCartService.getByUserId(user.getId()));
 
