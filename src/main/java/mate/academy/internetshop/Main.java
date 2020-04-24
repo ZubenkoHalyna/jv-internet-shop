@@ -35,6 +35,12 @@ public class Main {
         System.out.println("Order created: ");
         System.out.println(orderService.getAll());
 
+        ShoppingCartService shoppingCartService =
+                (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+        System.out.println("User's shopping carts: ");
+        System.out.println(shoppingCartService.getByUserId(1L));
+        System.out.println(shoppingCartService.getByUserId(2L));
+
         System.out.println("Orders for user with id 1:");
         System.out.println(orderService.getUserOrders(user));
 
@@ -58,7 +64,8 @@ public class Main {
         shoppingCartService.addProduct(new ShoppingCart(List.of(), userService.get(2L)),
                 productService.get(0L));
         System.out.println("ShoppingCart created: ");
-        System.out.println(shoppingCartService.getByUserId(user.getId()));
+        System.out.println(shoppingCartService.getByUserId(1L));
+        System.out.println(shoppingCartService.getByUserId(2L));
 
         System.out.println("Products in ShoppingCart:");
         shoppingCartService.getAllProducts(shoppingCart).forEach(System.out::println);
