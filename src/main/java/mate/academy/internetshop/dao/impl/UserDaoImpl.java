@@ -29,9 +29,17 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User update(User user) {
-        delete(user.getId());
-        Storage.users.add(user);
-        return user;
+        User oldUser = get(user.getId()).get();
+        if (!oldUser.getName().equals(user.getName())) {
+            oldUser.setName(user.getName());
+        }
+        if (!oldUser.getPassword().equals(user.getPassword())) {
+            oldUser.setPassword(user.getPassword());
+        }
+        if (!oldUser.getLogin().equals(user.getLogin())) {
+            oldUser.setLogin(user.getLogin());
+        }
+        return oldUser;
     }
 
     @Override

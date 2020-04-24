@@ -1,5 +1,6 @@
 package mate.academy.internetshop.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
@@ -36,9 +37,14 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart update(ShoppingCart shoppingCart) {
-        delete(shoppingCart.getId());
-        Storage.shoppingCarts.add(shoppingCart);
-        return shoppingCart;
+        ShoppingCart oldShoppingCart = get(shoppingCart.getId()).get();
+        if (!oldShoppingCart.getUser().getId().equals(shoppingCart.getUser().getId())) {
+            oldShoppingCart.setUser(shoppingCart.getUser());
+        }
+        if (!oldShoppingCart.getProducts().equals(shoppingCart.getProducts())) {
+            oldShoppingCart.setProducts(new ArrayList<>(shoppingCart.getProducts()));
+        }
+        return oldShoppingCart;
     }
 
     @Override

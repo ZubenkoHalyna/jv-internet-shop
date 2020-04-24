@@ -29,9 +29,14 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product update(Product product) {
-        delete(product.getId());
-        Storage.products.add(product);
-        return product;
+        Product oldProduct = get(product.getId()).get();
+        if (!oldProduct.getName().equals(product.getName())) {
+            oldProduct.setName(product.getName());
+        }
+        if (!oldProduct.getPrice().equals(product.getPrice())) {
+            oldProduct.setPrice(product.getPrice());
+        }
+        return oldProduct;
     }
 
     @Override

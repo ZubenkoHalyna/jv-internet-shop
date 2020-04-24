@@ -1,5 +1,6 @@
 package mate.academy.internetshop.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,9 +38,14 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public Order update(Order order) {
-        delete(order.getId());
-        Storage.orders.add(order);
-        return order;
+        Order oldOrder = get(order.getId()).get();
+        if (!oldOrder.getUser().getId().equals(order.getUser().getId())) {
+            oldOrder.setUser(order.getUser());
+        }
+        if (!oldOrder.getProducts().equals(order.getProducts())) {
+            oldOrder.setProducts(new ArrayList<>(order.getProducts()));
+        }
+        return oldOrder;
     }
 
     @Override
