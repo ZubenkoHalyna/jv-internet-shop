@@ -24,10 +24,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        int initialProductCount = shoppingCart.getProducts().size();
+        boolean productPresent = shoppingCart.getProducts().contains(product);
         shoppingCart.getProducts().remove(product);
         shoppingCartDao.update(shoppingCart);
-        return initialProductCount != shoppingCart.getProducts().size();
+        return productPresent;
     }
 
     @Override
