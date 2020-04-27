@@ -4,6 +4,9 @@
         <title>Internet shop</title>
     </head>
     <body>
-        Start page will be here.
+        <h1>Menu</h1>
+        <a href="${pageContext.request.contextPath}/users">Users</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/products">Products</a>
     </body>
 </html>
