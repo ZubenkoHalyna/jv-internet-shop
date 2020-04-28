@@ -8,5 +8,11 @@
         <a href="${pageContext.request.contextPath}/users">Users</a>
         <br/>
         <a href="${pageContext.request.contextPath}/products">Products</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/productsToBuy">Buy</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/shoppingcart">Shopping cart</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/orders">Orders</a>
     </body>
 </html>

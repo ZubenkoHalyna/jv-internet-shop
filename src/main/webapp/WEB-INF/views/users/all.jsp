@@ -33,5 +33,6 @@
         </c:forEach>
     </table>
     <a href="${pageContext.request.contextPath}/registration">Add</a>
+    <a href="${pageContext.request.contextPath}/index">Menu</a>
 </body>
 </html>
