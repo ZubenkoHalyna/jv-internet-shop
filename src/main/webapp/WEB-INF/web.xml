@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>users</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.UsersController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controller.GetAllUsersController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>users</servlet-name>
@@ -37,7 +37,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>products</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.ProductsController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controller.GetAllProductsController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>products</servlet-name>
