@@ -11,9 +11,9 @@ import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
 
 public class RegistrationController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     @Inject
-    private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

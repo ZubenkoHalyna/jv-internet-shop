@@ -12,14 +12,14 @@ import mate.academy.internetshop.service.ShoppingCartService;
 
 public class AddProductToShoppingCartController extends HttpServlet {
     private static final long USER_ID = 0;
-    private static final Injector injector =
+    private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
     @Inject
     private ProductService productService =
-            (ProductService) injector.getInstance(ProductService.class);
+            (ProductService) INJECTOR.getInstance(ProductService.class);
     @Inject
     private ShoppingCartService shoppingCartService =
-            (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+            (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
