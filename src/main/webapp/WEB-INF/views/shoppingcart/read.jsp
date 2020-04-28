@@ -34,8 +34,6 @@
     </table>
 
     <a href="${pageContext.request.contextPath}/order/complete">Complete order</a>
-    <a href="${pageContext.request.contextPath}/productsToBuy">
-        Buy
-    </a>
+    <a href="${pageContext.request.contextPath}/productsToBuy">Buy</a>
 </body>
 </html>
