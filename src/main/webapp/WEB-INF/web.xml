@@ -61,10 +61,66 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>shoppingcart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.ShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controller.GetShoppingCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>shoppingcart</servlet-name>
         <url-pattern>/shoppingcart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteProductFromShoppingCart</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.DeleteProductFromShoppingCartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteProductFromShoppingCart</servlet-name>
+        <url-pattern>/shoppingcart/deleteProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>completeOrder</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.CompleteOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>completeOrder</servlet-name>
+        <url-pattern>/order/complete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>orders</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.GetAllOrdersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orders</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>order</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.GetOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteOrder</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.DeleteOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteOrder</servlet-name>
+        <url-pattern>/order/delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.DeleteProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/product/delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>productsToBuy</servlet-name>
+        <servlet-class>mate.academy.internetshop.controller.GetAllProductsToBuyController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productsToBuy</servlet-name>
+        <url-pattern>/productsToBuy</url-pattern>
     </servlet-mapping>
 </web-app>

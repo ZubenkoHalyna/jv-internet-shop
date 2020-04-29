@@ -2,23 +2,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Shopping cart</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
+    <title>Order</title>
 </head>
 <body>
-    <h1>Products in shopping cart</h1>
+    <h1>Order details</h1>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Id</span>
+        </div>
+        <div class="form-control">
+            <c:out value="${order.id}"/>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">User</span>
+        </div>
+        <div class="form-control">
+            <c:out value="${order.user.name}"/>
+        </div>
+    </div>
+    <h2>Order products:</h2>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Delete</th>
             </tr>
         </thead>
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="product" items="${order.products}">
             <tr>
                 <td>
                     <c:out value="${product.id}"/>
@@ -29,18 +45,14 @@
                 <td>
                     <c:out value="${product.price}"/>
                 </td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/shoppingcart/deleteProduct?id=${product.id}">
-                        delete
-                    </a>
-                </td>
             </tr>
         </c:forEach>
     </table>
-
     <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/productsToBuy" class="btn btn-outline-secondary">Buy</a>
-        <a href="${pageContext.request.contextPath}/order/complete" class="btn btn-primary">Complete order</a>
+        <a href="${pageContext.request.contextPath}/index" class="btn btn-outline-secondary">Menu</a>
+        <a href="${pageContext.request.contextPath}/orders" class="btn btn-outline-secondary">Orders</a>
+        <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"
+           class="btn btn-outline-secondary">Delete</a>
     </div>
 </body>
 </html>
