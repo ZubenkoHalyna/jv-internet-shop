@@ -2,18 +2,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.getContextPath()}/css/main.css" type="text/css"/>
     <title>Orders</title>
 </head>
 <body>
     <h1>Orders:</h1>
-    <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>User id</th>
-            <th>User name</th>
-            <th>Details</th>
-            <th>Delete</th>
-        </tr>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>User id</th>
+                <th>User name</th>
+                <th>Details</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
         <c:forEach var="order" items="${orders}">
             <tr>
                 <td>
@@ -27,7 +33,7 @@
                 </td>
                 <td>
                     <a href="${pageContext.request.contextPath}/order?id=${order.id}">
-                        details
+                        Details
                     </a>
                 </td>
                 <td>
@@ -36,6 +42,6 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/index">Menu</a>
+    <a href="${pageContext.request.contextPath}/index" class="btn btn-outline-secondary">Menu</a>
 </body>
 </html>
