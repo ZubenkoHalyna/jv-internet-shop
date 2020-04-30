@@ -12,9 +12,9 @@ import mate.academy.internetshop.service.ShoppingCartService;
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Inject
-    ShoppingCartDao shoppingCartDao;
+    private ShoppingCartDao shoppingCartDao;
     @Inject
-    UserDao userDao;
+    private UserDao userDao;
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
