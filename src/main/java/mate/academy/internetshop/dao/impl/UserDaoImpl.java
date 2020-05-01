@@ -48,4 +48,11 @@ public class UserDaoImpl implements UserDao {
         user.ifPresent(Storage.users::remove);
         return user.isPresent();
     }
+
+    @Override
+    public Optional<User> getByLogin(String login) {
+        return Storage.users.stream()
+                .filter(user -> user.getLogin().equals(login))
+                .findAny();
+    }
 }
