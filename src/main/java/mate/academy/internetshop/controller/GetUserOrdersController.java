@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.service.OrderService;
 
-public class GetAllOrdersController extends HttpServlet {
+public class GetUserOrdersController extends HttpServlet {
     private static final String USER_ID = "user_id";
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
