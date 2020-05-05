@@ -17,6 +17,15 @@ public class User {
         this.roles = new HashSet<>(roles);
     }
 
+    public boolean hasRole(Role.RoleName roleName) {
+        for (Role r : roles) {
+            if (roleName == r.getRoleName()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Long getId() {
         return id;
     }

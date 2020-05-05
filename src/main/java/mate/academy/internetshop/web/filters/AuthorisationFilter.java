@@ -78,14 +78,7 @@ public class AuthorisationFilter implements Filter {
 
     private boolean isAuthorized(User user, List<Role.RoleName> authorizedRoles) {
         for (Role.RoleName role : authorizedRoles) {
-            boolean isRolePresent = false;
-            for (Role userRole : user.getRoles()) {
-                if (userRole.getRoleName() == role) {
-                    isRolePresent = true;
-                    break;
-                }
-            }
-            if (!isRolePresent) {
+            if (!user.hasRole(role)) {
                 return false;
             }
         }
