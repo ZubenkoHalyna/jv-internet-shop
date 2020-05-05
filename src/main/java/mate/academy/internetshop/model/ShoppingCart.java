@@ -13,15 +13,6 @@ public class ShoppingCart {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "ShoppingCart{"
-                + "id=" + id
-                + ", products=" + products
-                + ", user=" + user
-                + '}';
-    }
-
     public Long getId() {
         return id;
     }

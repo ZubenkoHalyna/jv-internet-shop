@@ -30,15 +30,6 @@ public class Product {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Product{"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + ", price=" + price
-                + '}';
-    }
-
     public Long getId() {
         return id;
     }

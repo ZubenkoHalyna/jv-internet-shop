@@ -39,7 +39,7 @@
     </table>
 
     <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/productsToBuy" class="btn btn-outline-secondary">Buy</a>
+        <a href="${pageContext.request.contextPath}/buyProducts" class="btn btn-outline-secondary">Buy</a>
         <a href="${pageContext.request.contextPath}/order/complete" class="btn btn-primary">Complete order</a>
     </div>
 </body>

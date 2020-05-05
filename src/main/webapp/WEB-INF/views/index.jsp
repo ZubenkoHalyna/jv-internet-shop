@@ -12,10 +12,12 @@
         <br/>
         <a href="${pageContext.request.contextPath}/products">Products</a>
         <br/>
-        <a href="${pageContext.request.contextPath}/productsToBuy">Buy</a>
+        <a href="${pageContext.request.contextPath}/buyProducts">Buy</a>
         <br/>
         <a href="${pageContext.request.contextPath}/shoppingcart">Shopping cart</a>
         <br/>
         <a href="${pageContext.request.contextPath}/orders">Orders</a>
+        <br/>
+        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary mt-1">Log out</a>
     </body>
 </html>
