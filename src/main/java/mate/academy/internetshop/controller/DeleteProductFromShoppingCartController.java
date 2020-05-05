@@ -10,7 +10,6 @@ import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
 public class DeleteProductFromShoppingCartController extends HttpServlet {
-    private static final long USER_ID = 0;
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
     private ProductService productService =
@@ -21,7 +20,8 @@ public class DeleteProductFromShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        shoppingCartService.deleteProduct(shoppingCartService.getByUserId(USER_ID),
+        Long id = (Long) req.getSession().getAttribute("user_id");
+        shoppingCartService.deleteProduct(shoppingCartService.getByUserId(id),
                 productService.get(Long.parseLong(req.getParameter("id"))));
         resp.sendRedirect(req.getContextPath() + "/shoppingcart");
     }

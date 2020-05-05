@@ -85,7 +85,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>orders</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetAllOrdersController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controller.GetUserOrdersController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>orders</servlet-name>

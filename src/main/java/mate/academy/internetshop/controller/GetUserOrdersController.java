@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.service.OrderService;
 
-public class GetAllOrdersController extends HttpServlet {
+public class GetUserOrdersController extends HttpServlet {
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
     private OrderService orderService =
@@ -17,7 +17,8 @@ public class GetAllOrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("orders", orderService.getAll());
+        Long id = (Long) req.getSession().getAttribute("user_id");
+        req.setAttribute("orders", orderService.getUserOrders(id));
         req.getRequestDispatcher("WEB-INF/views/orders/all.jsp").forward(req, resp);
     }
 }
