@@ -15,7 +15,7 @@ public class LoginController extends HttpServlet {
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
     private static final String USER_ID = "user_id";
-    private static Logger log = Logger.getLogger(LoginController.class);
+    private static final Logger LOGGER = Logger.getLogger(LoginController.class);
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
     private final AuthenticationService authenticationService =
@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
         try {
             User user = authenticationService.login(req.getParameter(LOGIN),
                     req.getParameter(PASSWORD));
-            log.info("User login: " + user.getLogin());
+            LOGGER.info("User login: " + user.getLogin());
             req.getSession().setAttribute(USER_ID, user.getId());
         } catch (AuthenticationException e) {
             req.setAttribute("msg", e.getMessage());
