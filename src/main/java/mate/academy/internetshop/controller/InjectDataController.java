@@ -11,22 +11,14 @@ import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
 
-public class RegistrationController extends HttpServlet {
+public class InjectDataController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/views/users/registration.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        userService.create(new User(req.getParameter("name"), req.getParameter("login"),
-                req.getParameter("password"), Set.of(Role.of("USER"))));
-        resp.sendRedirect(req.getContextPath() + "/users");
+        userService.create(new User("Admin", "admin", "", Set.of(Role.of("ADMIN"))));
+        resp.sendRedirect(req.getContextPath());
     }
 }

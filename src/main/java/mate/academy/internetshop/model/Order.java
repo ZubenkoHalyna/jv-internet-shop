@@ -13,15 +13,6 @@ public class Order {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Order{"
-                + "id=" + id
-                + ", products=" + products
-                + ", user=" + user
-                + '}';
-    }
-
     public Long getId() {
         return id;
     }
