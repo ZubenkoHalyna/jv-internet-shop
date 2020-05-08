@@ -13,6 +13,11 @@ public class Product {
         price = productPrice;
     }
 
+    public Product(Long productId, String productName, BigDecimal productPrice) {
+        this(productName, productPrice);
+        id = productId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
