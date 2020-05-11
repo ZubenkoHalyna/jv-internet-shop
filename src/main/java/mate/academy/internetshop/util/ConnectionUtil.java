@@ -4,12 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import mate.academy.internetshop.controller.LoginController;
 import mate.academy.internetshop.exceptions.ConnectToDbException;
 import org.apache.log4j.Logger;
 
 public class ConnectionUtil {
-    private static final Logger LOGGER = Logger.getLogger(LoginController.class);
+    private static final Logger LOGGER = Logger.getLogger(ConnectionUtil.class);
     private static final Properties connectionProperties;
     private static final String URL =
             "jdbc:mysql://localhost:3306/internet_shop?serverTimezone=UTC";
