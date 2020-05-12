@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,15 +8,18 @@
     <title>Registration</title>
 </head>
 <body>
-<h1>Hello! Please provide your user details.</h1>
+    <h1>Hello! Please provide your user details.</h1>
+    <c:if test="${msg != null}">
+        <div class="alert alert-danger"> ${msg} </div>
+    </c:if>
     <form method="post" action="${pageContext.request.contextPath}/registration">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control">
+            <input type="text" name="name" value="${name}" id="name" class="form-control">
         </div>
         <div class="form-group">
             <label for="login">Login</label>
-            <input type="text" name="login" id="login" class="form-control">
+            <input type="text" name="login" value="${login}" id="login" class="form-control">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
