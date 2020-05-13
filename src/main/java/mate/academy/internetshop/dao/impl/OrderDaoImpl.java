@@ -30,15 +30,15 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getByUser(Long userId) {
         return Storage.orders.stream()
-                .filter(order -> order.getUser().getId().equals(userId))
+                .filter(order -> order.getUserId().equals(userId))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Order update(Order order) {
         Order oldOrder = get(order.getId()).get();
-        if (!oldOrder.getUser().getId().equals(order.getUser().getId())) {
-            oldOrder.setUser(order.getUser());
+        if (!oldOrder.getUserId().equals(order.getUserId())) {
+            oldOrder.setUserId(order.getUserId());
         }
         if (!oldOrder.getProducts().equals(order.getProducts())) {
             oldOrder.setProducts(new ArrayList<>(order.getProducts()));

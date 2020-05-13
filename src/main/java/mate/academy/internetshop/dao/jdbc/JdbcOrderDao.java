@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.OrderDao;
 import mate.academy.internetshop.dao.ProductDao;
-import mate.academy.internetshop.dao.UserDao;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.model.Order;
@@ -19,8 +18,6 @@ import mate.academy.internetshop.util.ConnectionUtil;
 
 @Dao
 public class JdbcOrderDao implements OrderDao {
-    @Inject
-    private UserDao userDao;
     @Inject
     private ProductDao productDao;
 
@@ -47,7 +44,7 @@ public class JdbcOrderDao implements OrderDao {
             String query = "INSERT INTO orders (user_id) VALUE (?)";
             PreparedStatement statement = con.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setLong(1, order.getUser().getId());
+            statement.setLong(1, order.getUserId());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -100,7 +97,7 @@ public class JdbcOrderDao implements OrderDao {
         try (Connection con = ConnectionUtil.getConnection()) {
             String query = "UPDATE orders SET user_id = ? WHERE order_id = ?";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setLong(1, order.getUser().getId());
+            statement.setLong(1, order.getUserId());
             statement.setLong(2, order.getId());
             statement.executeUpdate();
             query = "DELETE FROM orders_products WHERE order_id = ?";
@@ -126,9 +123,8 @@ public class JdbcOrderDao implements OrderDao {
         }
     }
 
-    private Order getOrder(Long id, Long userId) throws SQLException {
-        return new Order(id, productDao.getByOrder(id),
-                userDao.get(userId).orElseThrow());
+    private Order getOrder(Long id, Long userId) {
+        return new Order(id, productDao.getByOrder(id), userId);
     }
 
     private boolean saveProducts(Order order, Connection con) throws SQLException {

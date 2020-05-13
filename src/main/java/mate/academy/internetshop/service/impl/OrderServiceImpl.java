@@ -6,7 +6,6 @@ import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
@@ -18,9 +17,9 @@ public class OrderServiceImpl implements OrderService {
     private ShoppingCartService shoppingCartService;
 
     @Override
-    public Order completeOrder(List<Product> products, User user) {
-        Order order = orderDao.create(new Order(products, user));
-        shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
+    public Order completeOrder(List<Product> products, Long userId) {
+        Order order = orderDao.create(new Order(products, userId));
+        shoppingCartService.clear(shoppingCartService.getByUserId(userId));
         return order;
     }
 

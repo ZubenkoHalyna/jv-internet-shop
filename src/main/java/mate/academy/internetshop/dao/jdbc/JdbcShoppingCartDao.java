@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.dao.ShoppingCartDao;
-import mate.academy.internetshop.dao.UserDao;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.model.Product;
@@ -19,8 +18,6 @@ import mate.academy.internetshop.util.ConnectionUtil;
 
 @Dao
 public class JdbcShoppingCartDao implements ShoppingCartDao {
-    @Inject
-    private UserDao userDao;
     @Inject
     private ProductDao productDao;
 
@@ -48,7 +45,7 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             String query = "INSERT INTO shopping_carts (user_id) VALUES (?)";
             PreparedStatement statement = conn.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setLong(1, shoppingCart.getUser().getId());
+            statement.setLong(1, shoppingCart.getUserId());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -100,7 +97,7 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             String query = "UPDATE shopping_carts SET user_id = ? "
                     + "WHERE shopping_cart_id = ?";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setLong(1, shoppingCart.getUser().getId());
+            statement.setLong(1, shoppingCart.getUserId());
             statement.setLong(2, shoppingCart.getId());
             statement.executeUpdate();
             query = "DELETE FROM shopping_carts_products WHERE shopping_cart_id = ?";
@@ -127,9 +124,7 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
     }
 
     private ShoppingCart getShoppingCart(Long id, long userId) {
-        return new ShoppingCart(id,
-                productDao.getByShoppingCart(id),
-                userDao.get(userId).get());
+        return new ShoppingCart(id, productDao.getByShoppingCart(id), userId);
     }
 
     private boolean saveProducts(ShoppingCart cart, Connection con)
