@@ -49,6 +49,7 @@ public class JdbcUserDao implements UserDao {
             user.setId(resultSet.getLong(1));
             statement.close();
             saveRoles(user, conn);
+
             return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
