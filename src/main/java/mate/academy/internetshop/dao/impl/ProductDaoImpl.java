@@ -1,10 +1,13 @@
 package mate.academy.internetshop.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.db.Storage;
+import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.ShoppingCart;
 
 public class ProductDaoImpl implements ProductDao {
     @Override
@@ -42,5 +45,23 @@ public class ProductDaoImpl implements ProductDao {
         Optional<Product> product = get(id);
         product.ifPresent(Storage.products::remove);
         return product.isPresent();
+    }
+
+    @Override
+    public List<Product> getByOrder(Long orderId) {
+        return Storage.orders.stream()
+                .filter(order -> order.getId().equals(orderId))
+                .findFirst()
+                .map(Order::getProducts)
+                .orElse(new ArrayList<Product>());
+    }
+
+    @Override
+    public List<Product> getByShoppingCart(Long orderId) {
+        return Storage.shoppingCarts.stream()
+                .filter(cart -> cart.getId().equals(orderId))
+                .findFirst()
+                .map(ShoppingCart::getProducts)
+                .orElse(new ArrayList<Product>());
     }
 }

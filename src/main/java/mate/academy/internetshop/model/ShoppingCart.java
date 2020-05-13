@@ -6,11 +6,16 @@ import java.util.List;
 public class ShoppingCart {
     private Long id;
     private List<Product> products;
-    private User user;
+    private Long userId;
 
-    public ShoppingCart(List<Product> products, User user) {
+    public ShoppingCart(List<Product> products, Long userId) {
         this.products = new ArrayList<>(products);
-        this.user = user;
+        this.userId = userId;
+    }
+
+    public ShoppingCart(Long id, List<Product> products, Long userId) {
+        this(products, userId);
+        this.id = id;
     }
 
     public Long getId() {
@@ -21,12 +26,12 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public List<Product> getProducts() {

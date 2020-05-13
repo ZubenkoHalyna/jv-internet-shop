@@ -5,10 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.db.Storage;
-import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.ShoppingCart;
 
-@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
@@ -26,7 +24,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public Optional<ShoppingCart> getByUser(Long userId) {
         return Storage.shoppingCarts.stream()
-                .filter(order -> order.getUser().getId().equals(userId))
+                .filter(order -> order.getUserId().equals(userId))
                 .findAny();
     }
 
@@ -38,8 +36,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart update(ShoppingCart shoppingCart) {
         ShoppingCart oldShoppingCart = get(shoppingCart.getId()).get();
-        if (!oldShoppingCart.getUser().getId().equals(shoppingCart.getUser().getId())) {
-            oldShoppingCart.setUser(shoppingCart.getUser());
+        if (!oldShoppingCart.getUserId().equals(shoppingCart.getUserId())) {
+            oldShoppingCart.setUserId(shoppingCart.getUserId());
         }
         if (!oldShoppingCart.getProducts().equals(shoppingCart.getProducts())) {
             oldShoppingCart.setProducts(new ArrayList<>(shoppingCart.getProducts()));

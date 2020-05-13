@@ -17,6 +17,11 @@ public class User {
         this.roles = new HashSet<>(roles);
     }
 
+    public User(Long id, String name, String login, String password, Set<Role> roles) {
+        this(name, login, password, roles);
+        this.id = id;
+    }
+
     public boolean hasRole(Role.RoleName roleName) {
         for (Role r : roles) {
             if (roleName == r.getRoleName()) {

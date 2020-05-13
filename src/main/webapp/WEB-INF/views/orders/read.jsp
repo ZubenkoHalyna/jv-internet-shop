@@ -22,7 +22,7 @@
             <span class="input-group-text">User</span>
         </div>
         <div class="form-control">
-            <c:out value="${order.user.name}"/>
+            <c:out value="${user.name}"/>
         </div>
     </div>
     <h2>Order products:</h2>
