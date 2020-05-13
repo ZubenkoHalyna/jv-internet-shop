@@ -16,11 +16,9 @@ import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.util.ConnectionUtil;
-import org.apache.log4j.Logger;
 
 @Dao
 public class JdbcShoppingCartDao implements ShoppingCartDao {
-    private static final Logger LOGGER = Logger.getLogger(JdbcShoppingCartDao.class);
     @Inject
     private UserDao userDao;
     @Inject
@@ -40,7 +38,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -60,7 +57,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             saveProducts(shoppingCart, conn);
             return shoppingCart;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -77,7 +73,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -95,7 +90,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             }
             return result;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -116,7 +110,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             saveProducts(shoppingCart, con);
             return get(shoppingCart.getId()).get();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -129,7 +122,6 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
             statement.setLong(1, id);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -142,7 +134,8 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
 
     private boolean saveProducts(ShoppingCart cart, Connection con)
             throws SQLException {
-        String query = "INSERT INTO shopping_carts_products VALUES (?, ?)";
+        String query = "INSERT INTO shopping_carts_products "
+                + "(shopping_cart_id, product_id) VALUES (?, ?)";
         PreparedStatement statement = con.prepareStatement(query);
         for (Product product : cart.getProducts()) {
             statement.setLong(1, cart.getId());

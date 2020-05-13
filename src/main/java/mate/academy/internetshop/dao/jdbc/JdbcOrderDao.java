@@ -15,13 +15,10 @@ import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.util.ConnectionUtil;
-import org.apache.log4j.Logger;
 
 @Dao
 public class JdbcOrderDao implements OrderDao {
-    private static final Logger LOGGER = Logger.getLogger(JdbcOrderDao.class);
     @Inject
     private UserDao userDao;
     @Inject
@@ -35,13 +32,11 @@ public class JdbcOrderDao implements OrderDao {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             List<Order> orders = new ArrayList<>();
-            User user = userDao.get(userId).orElseThrow();
             while (resultSet.next()) {
                 orders.add(getOrder(resultSet.getLong("order_id"), userId));
             }
             return orders;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -61,7 +56,6 @@ public class JdbcOrderDao implements OrderDao {
             saveProducts(order, con);
             return order;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -78,7 +72,6 @@ public class JdbcOrderDao implements OrderDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -98,7 +91,6 @@ public class JdbcOrderDao implements OrderDao {
             }
             return orders;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -118,7 +110,6 @@ public class JdbcOrderDao implements OrderDao {
             saveProducts(order, con);
             return get(order.getId()).get();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -131,7 +122,6 @@ public class JdbcOrderDao implements OrderDao {
             statement.setLong(1, id);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -142,7 +132,7 @@ public class JdbcOrderDao implements OrderDao {
     }
 
     private boolean saveProducts(Order order, Connection con) throws SQLException {
-        String query = "INSERT INTO orders_products VALUES (?, ?)";
+        String query = "INSERT INTO orders_products (order_id, product_id) VALUES (?, ?)";
         PreparedStatement statement = con.prepareStatement(query);
         for (Product product : order.getProducts()) {
             statement.setLong(1, order.getId());

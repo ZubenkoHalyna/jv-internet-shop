@@ -15,12 +15,9 @@ import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.util.ConnectionUtil;
-import org.apache.log4j.Logger;
 
 @Dao
 public class JdbcUserDao implements UserDao {
-    private static final Logger LOGGER = Logger.getLogger(JdbcUserDao.class);
-
     @Override
     public Optional<User> getByLogin(String login) {
         try (Connection conn = ConnectionUtil.getConnection()) {
@@ -33,7 +30,6 @@ public class JdbcUserDao implements UserDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -54,7 +50,6 @@ public class JdbcUserDao implements UserDao {
             saveRoles(user, conn);
             return user;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -71,7 +66,6 @@ public class JdbcUserDao implements UserDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -88,7 +82,6 @@ public class JdbcUserDao implements UserDao {
             }
             return users;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -109,7 +102,6 @@ public class JdbcUserDao implements UserDao {
             saveRoles(user, conn);
             return get(user.getId()).get();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -122,7 +114,6 @@ public class JdbcUserDao implements UserDao {
             statement.setLong(1, id);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -142,13 +133,12 @@ public class JdbcUserDao implements UserDao {
             }
             return result;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
 
     private boolean saveRoles(User user, Connection con) throws SQLException {
-        String query = "INSERT INTO users_roles VALUES (?, ?)";
+        String query = "INSERT INTO users_roles (user_id, role_id) VALUES (?, ?)";
         PreparedStatement statement = con.prepareStatement(query);
         for (Role role : user.getRoles()) {
             statement.setLong(1, user.getId());

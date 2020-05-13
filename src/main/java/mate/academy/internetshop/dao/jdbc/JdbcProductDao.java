@@ -12,12 +12,9 @@ import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.util.ConnectionUtil;
-import org.apache.log4j.Logger;
 
 @Dao
 public class JdbcProductDao implements ProductDao {
-    private static final Logger LOGGER = Logger.getLogger(JdbcProductDao.class);
-
     @Override
     public Product create(Product product) {
         try (Connection con = ConnectionUtil.getConnection()) {
@@ -32,7 +29,6 @@ public class JdbcProductDao implements ProductDao {
             product.setId(result.getLong(1));
             return product;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -49,7 +45,6 @@ public class JdbcProductDao implements ProductDao {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -66,7 +61,6 @@ public class JdbcProductDao implements ProductDao {
             }
             return list;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -79,14 +73,8 @@ public class JdbcProductDao implements ProductDao {
             statement.setString(1, product.getName());
             statement.setBigDecimal(2, product.getPrice());
             statement.setLong(3, product.getId());
-            if (statement.executeUpdate() > 0) {
-                return get(product.getId()).get();
-            }
-            String msg = "Enable to update product with id " + product.getId();
-            LOGGER.error(msg);
-            throw new RuntimeException(msg);
+            return get(product.getId()).get();
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -99,7 +87,6 @@ public class JdbcProductDao implements ProductDao {
             statement.setLong(1, id);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -129,7 +116,6 @@ public class JdbcProductDao implements ProductDao {
             }
             return list;
         } catch (SQLException e) {
-            LOGGER.error(e);
             throw new RuntimeException(e);
         }
     }
