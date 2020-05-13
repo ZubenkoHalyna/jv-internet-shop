@@ -1,7 +1,7 @@
 CREATE TABLE products (
     product_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    price DECIMAL NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (product_id)
 );
 
