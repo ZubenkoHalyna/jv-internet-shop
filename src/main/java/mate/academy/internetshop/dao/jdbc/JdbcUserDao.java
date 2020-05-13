@@ -105,7 +105,7 @@ public class JdbcUserDao implements UserDao {
             statement.executeUpdate();
             statement.close();
             saveRoles(user, conn);
-            return get(user.getId()).get();
+            return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
