@@ -47,6 +47,7 @@ public class JdbcUserDao implements UserDao {
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
             user.setId(resultSet.getLong(1));
+            statement.close();
             saveRoles(user, conn);
             return user;
         } catch (SQLException e) {
@@ -96,10 +97,12 @@ public class JdbcUserDao implements UserDao {
             statement.setString(3, user.getPassword());
             statement.setLong(4, user.getId());
             statement.executeUpdate();
+            statement.close();
             query = "DELETE FROM users_roles WHERE user_id = ?";
             statement = conn.prepareStatement(query);
             statement.setLong(1, user.getId());
             statement.executeUpdate();
+            statement.close();
             saveRoles(user, conn);
             return get(user.getId()).get();
         } catch (SQLException e) {
