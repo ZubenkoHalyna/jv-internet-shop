@@ -94,18 +94,12 @@ public class JdbcShoppingCartDao implements ShoppingCartDao {
     @Override
     public ShoppingCart update(ShoppingCart shoppingCart) {
         try (Connection con = ConnectionUtil.getConnection()) {
-            String query = "UPDATE shopping_carts SET user_id = ? "
-                    + "WHERE shopping_cart_id = ?";
+            String query = "DELETE FROM shopping_carts_products WHERE shopping_cart_id = ?";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setLong(1, shoppingCart.getUserId());
-            statement.setLong(2, shoppingCart.getId());
-            statement.executeUpdate();
-            query = "DELETE FROM shopping_carts_products WHERE shopping_cart_id = ?";
-            statement = con.prepareStatement(query);
             statement.setLong(1, shoppingCart.getId());
             statement.executeUpdate();
             saveProducts(shoppingCart, con);
-            return get(shoppingCart.getId()).get();
+            return shoppingCart;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

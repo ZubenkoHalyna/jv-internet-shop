@@ -73,7 +73,8 @@ public class JdbcProductDao implements ProductDao {
             statement.setString(1, product.getName());
             statement.setBigDecimal(2, product.getPrice());
             statement.setLong(3, product.getId());
-            return get(product.getId()).get();
+            statement.executeUpdate();
+            return product;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

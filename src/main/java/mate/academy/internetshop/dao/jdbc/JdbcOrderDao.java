@@ -95,17 +95,12 @@ public class JdbcOrderDao implements OrderDao {
     @Override
     public Order update(Order order) {
         try (Connection con = ConnectionUtil.getConnection()) {
-            String query = "UPDATE orders SET user_id = ? WHERE order_id = ?";
+            String query = "DELETE FROM orders_products WHERE order_id = ?";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setLong(1, order.getUserId());
-            statement.setLong(2, order.getId());
-            statement.executeUpdate();
-            query = "DELETE FROM orders_products WHERE order_id = ?";
-            statement = con.prepareStatement(query);
             statement.setLong(1, order.getId());
             statement.executeUpdate();
             saveProducts(order, con);
-            return get(order.getId()).get();
+            return order;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

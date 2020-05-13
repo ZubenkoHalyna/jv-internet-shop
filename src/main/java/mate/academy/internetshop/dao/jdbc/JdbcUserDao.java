@@ -99,6 +99,7 @@ public class JdbcUserDao implements UserDao {
             query = "DELETE FROM users_roles WHERE user_id = ?";
             statement = conn.prepareStatement(query);
             statement.setLong(1, user.getId());
+            statement.executeUpdate();
             saveRoles(user, conn);
             return get(user.getId()).get();
         } catch (SQLException e) {
