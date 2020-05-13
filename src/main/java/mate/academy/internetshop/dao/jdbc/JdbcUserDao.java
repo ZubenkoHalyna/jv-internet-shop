@@ -152,11 +152,10 @@ public class JdbcUserDao implements UserDao {
         PreparedStatement statement = con.prepareStatement(query);
         for (Role role : user.getRoles()) {
             statement.setLong(1, user.getId());
-            Long roleId = role.getId();
-            if (roleId == null) {
-                roleId = getRoleIdByName(role.getRoleName(), con);
+            if (role.getId() == null) {
+                role.setId(getRoleIdByName(role.getRoleName(), con));
             }
-            statement.setLong(2, roleId);
+            statement.setLong(2, role.getId());
             statement.executeUpdate();
         }
         return true;
