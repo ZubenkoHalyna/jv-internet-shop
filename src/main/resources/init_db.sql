@@ -1,18 +1,18 @@
 CREATE TABLE products (
-    product_id BIGINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+    product_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     price DECIMAL NOT NULL,
     PRIMARY KEY (product_id)
 );
 
 CREATE TABLE roles (
-    role_id BIGINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+    role_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     PRIMARY KEY (role_id)
 );
 
 CREATE TABLE users (
-    user_id BIGINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+    user_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     login VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(50) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE users_roles (
 );
 
 CREATE TABLE orders (
-    order_id BIGINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+    order_id BIGINT UNSIGNED AUTO_INCREMENT,
     user_id BIGINT UNSIGNED NOT NULL,
     PRIMARY KEY (order_id),
     CONSTRAINT FK_OrderUser
@@ -43,7 +43,7 @@ CREATE TABLE orders_products (
 );
 
 CREATE TABLE shopping_carts (
-    shopping_cart_id BIGINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
+    shopping_cart_id BIGINT UNSIGNED AUTO_INCREMENT,
     user_id BIGINT UNSIGNED NOT NULL,
     PRIMARY KEY (shopping_cart_id),
     CONSTRAINT FK_ShoppingCartUser
