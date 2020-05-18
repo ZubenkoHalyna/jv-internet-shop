@@ -1,5 +1,6 @@
 package mate.academy.internetshop.dao.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.UserDao;
@@ -31,8 +32,11 @@ public class UserDaoImpl implements UserDao {
         if (!oldUser.getName().equals(user.getName())) {
             oldUser.setName(user.getName());
         }
-        if (!oldUser.getPassword().equals(user.getPassword())) {
-            oldUser.setPassword(user.getPassword());
+        if (!Arrays.equals(oldUser.getPasswordHash(), user.getPasswordHash())) {
+            oldUser.setPasswordHash(user.getPasswordHash());
+        }
+        if (!Arrays.equals(oldUser.getSalt(), user.getSalt())) {
+            oldUser.setSalt(user.getSalt());
         }
         if (!oldUser.getLogin().equals(user.getLogin())) {
             oldUser.setLogin(user.getLogin());

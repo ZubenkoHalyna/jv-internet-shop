@@ -37,19 +37,20 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User create(User user) {
         try (Connection conn = ConnectionUtil.getConnection()) {
-            String query = "INSERT INTO users (name, login, password) VALUES (?, ?, ?)";
+            String query = "INSERT INTO users (name, login, salt, password) "
+                    + "VALUES (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
-            statement.setString(3, user.getPassword());
+            statement.setBytes(3, user.getSalt());
+            statement.setBytes(4, user.getPasswordHash());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
             user.setId(resultSet.getLong(1));
             statement.close();
             saveRoles(user, conn);
-
             return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -91,12 +92,14 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User update(User user) {
         try (Connection conn = ConnectionUtil.getConnection()) {
-            String query = "UPDATE users SET name = ?, login = ?, password = ? WHERE user_id = ?";
+            String query = "UPDATE users SET name = ?, login = ?, salt = ?, "
+                    + "password = ? WHERE user_id = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
-            statement.setString(3, user.getPassword());
-            statement.setLong(4, user.getId());
+            statement.setBytes(3, user.getSalt());
+            statement.setBytes(4, user.getPasswordHash());
+            statement.setLong(5, user.getId());
             statement.executeUpdate();
             statement.close();
             query = "DELETE FROM users_roles WHERE user_id = ?";
@@ -170,6 +173,9 @@ public class JdbcUserDao implements UserDao {
         Long id = resultSet.getLong("user_id");
         Set<Role> roles = getUserRoles(id);
         return new User(id, resultSet.getString("name"),
-                resultSet.getString("login"), resultSet.getString("password"), roles);
+                resultSet.getString("login"),
+                resultSet.getBytes("salt"),
+                resultSet.getBytes("password"),
+                roles);
     }
 }

@@ -11,11 +11,14 @@ CREATE TABLE roles (
     PRIMARY KEY (role_id)
 );
 
+INSERT INTO roles (name) VALUES ('ADMIN'), ('USER');
+
 CREATE TABLE users (
     user_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     login VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    salt BINARY(16) NOT NULL,
+    password BINARY(64) NOT NULL,
     PRIMARY KEY (user_id)
 );
 
