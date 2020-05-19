@@ -1,9 +1,9 @@
 package mate.academy.internetshop.util;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import org.apache.log4j.Logger;
 
 public class HashUtil {
@@ -17,15 +17,26 @@ public class HashUtil {
         return salt;
     }
 
-    public static byte[] hashPassword(String password, byte[] salt) {
+    public static String hashPassword(String password, byte[] salt) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance(HASH_ALGORITHM);
-            System.out.println(Arrays.toString(salt));
             messageDigest.update(salt);
-            return messageDigest.digest(password.getBytes());
+            return toHexString(messageDigest.digest(password.getBytes()));
         } catch (NoSuchAlgorithmException e) {
             LOGGER.error("Enable to get hash with " + HASH_ALGORITHM + " algorithm");
             throw new RuntimeException(e);
         }
+    }
+
+    public static String hashPassword(String password, String salt) {
+        return hashPassword(password, fromHexString(salt));
+    }
+
+    public static String toHexString(byte[] bytes) {
+        return new BigInteger(bytes).toString(16);
+    }
+
+    public static byte[] fromHexString(String str) {
+        return new BigInteger(str, 16).toByteArray();
     }
 }

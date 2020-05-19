@@ -10,7 +10,6 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
-import mate.academy.internetshop.util.HashUtil;
 
 public class RegistrationController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
@@ -32,11 +31,8 @@ public class RegistrationController extends HttpServlet {
             req.setAttribute("name", (req.getParameter("name")));
             req.getRequestDispatcher("WEB-INF/views/users/registration.jsp").forward(req, resp);
         } else {
-            byte[] salt = HashUtil.getSalt();
             userService.create(new User(req.getParameter("name"), login,
-                    salt,
-                    HashUtil.hashPassword(req.getParameter("password"), salt),
-                    Set.of(Role.of("USER"))));
+                    req.getParameter("password"), Set.of(Role.of("USER"))));
             resp.sendRedirect(req.getContextPath() + "/users");
         }
     }

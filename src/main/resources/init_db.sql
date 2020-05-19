@@ -17,8 +17,8 @@ CREATE TABLE users (
     user_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     login VARCHAR(50) UNIQUE NOT NULL,
-    salt BINARY(16) NOT NULL,
-    password BINARY(64) NOT NULL,
+    salt VARCHAR(50) NOT NULL,
+    password VARCHAR(150) NOT NULL,
     PRIMARY KEY (user_id)
 );
 

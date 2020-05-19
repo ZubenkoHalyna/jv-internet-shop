@@ -43,8 +43,8 @@ public class JdbcUserDao implements UserDao {
                     PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
-            statement.setBytes(3, user.getSalt());
-            statement.setBytes(4, user.getPasswordHash());
+            statement.setString(3, user.getSalt());
+            statement.setString(4, user.getPasswordHash());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
@@ -97,8 +97,8 @@ public class JdbcUserDao implements UserDao {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, user.getName());
             statement.setString(2, user.getLogin());
-            statement.setBytes(3, user.getSalt());
-            statement.setBytes(4, user.getPasswordHash());
+            statement.setString(3, user.getSalt());
+            statement.setString(4, user.getPasswordHash());
             statement.setLong(5, user.getId());
             statement.executeUpdate();
             statement.close();
@@ -174,8 +174,8 @@ public class JdbcUserDao implements UserDao {
         Set<Role> roles = getUserRoles(id);
         return new User(id, resultSet.getString("name"),
                 resultSet.getString("login"),
-                resultSet.getBytes("salt"),
-                resultSet.getBytes("password"),
+                resultSet.getString("salt"),
+                resultSet.getString("password"),
                 roles);
     }
 }
