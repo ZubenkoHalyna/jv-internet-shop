@@ -4,10 +4,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import org.apache.log4j.Logger;
 
 public class HashUtil {
-    private static Logger LOGGER = Logger.getLogger(HashUtil.class);
     private static String HASH_ALGORITHM = "SHA-512";
 
     public static byte[] getSalt() {
@@ -23,7 +21,6 @@ public class HashUtil {
             messageDigest.update(salt);
             return toHexString(messageDigest.digest(password.getBytes()));
         } catch (NoSuchAlgorithmException e) {
-            LOGGER.error("Enable to get hash with " + HASH_ALGORITHM + " algorithm");
             throw new RuntimeException(e);
         }
     }
