@@ -31,8 +31,11 @@ public class UserDaoImpl implements UserDao {
         if (!oldUser.getName().equals(user.getName())) {
             oldUser.setName(user.getName());
         }
-        if (!oldUser.getPassword().equals(user.getPassword())) {
-            oldUser.setPassword(user.getPassword());
+        if (!oldUser.getPasswordHash().equals(user.getPasswordHash())) {
+            oldUser.setPasswordHash(user.getPasswordHash());
+        }
+        if (!oldUser.getSalt().equals(user.getSalt())) {
+            oldUser.setSalt(user.getSalt());
         }
         if (!oldUser.getLogin().equals(user.getLogin())) {
             oldUser.setLogin(user.getLogin());

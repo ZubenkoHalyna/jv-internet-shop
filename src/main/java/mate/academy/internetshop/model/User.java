@@ -7,19 +7,22 @@ public class User {
     private Long id;
     private String name;
     private String login;
-    private String password;
+    private String salt;
+    private String passwordHash;
     private Set<Role> roles;
 
     public User(String name, String login, String password, Set<Role> roles) {
         this.name = name;
         this.login = login;
-        this.password = password;
+        this.passwordHash = password;
         this.roles = new HashSet<>(roles);
     }
 
-    public User(Long id, String name, String login, String password, Set<Role> roles) {
+    public User(Long id, String name, String login, String salt,
+                String password, Set<Role> roles) {
         this(name, login, password, roles);
         this.id = id;
+        this.salt = salt;
     }
 
     public boolean hasRole(Role.RoleName roleName) {
@@ -55,12 +58,20 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public Set<Role> getRoles() {
