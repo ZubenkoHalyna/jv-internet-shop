@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="products" scope="request" type="java.util.List<mate.academy.internet.shop.model.Product>"/>
 <html>
 <head>
     <title>Products</title>
@@ -38,7 +39,7 @@
         </c:forEach>
     </table>
     <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/index" class="btn btn-outline-secondary">Menu</a>
+        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
         <a href="${pageContext.request.contextPath}/product/add" class="btn btn-primary">Add</a>
     </div>
 </body>

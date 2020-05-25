@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>index</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.IndexController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.IndexController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>users</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetAllUsersController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetAllUsersController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>users</servlet-name>
@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>register</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.RegistrationController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.RegistrationController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>register</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>deleteUser</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.DeleteUserController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.DeleteUserController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteUser</servlet-name>
@@ -37,7 +37,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>products</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetAllProductsController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetAllProductsController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>products</servlet-name>
@@ -45,7 +45,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>addProduct</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.AddProductController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.AddProductController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addProduct</servlet-name>
@@ -53,7 +53,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>addProductToShoppingCart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.AddProductToShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.AddProductToShoppingCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addProductToShoppingCart</servlet-name>
@@ -61,7 +61,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>shoppingcart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetShoppingCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>shoppingcart</servlet-name>
@@ -69,7 +69,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>deleteProductFromShoppingCart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.DeleteProductFromShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.DeleteProductFromShoppingCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteProductFromShoppingCart</servlet-name>
@@ -77,7 +77,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>completeOrder</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.CompleteOrderController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.CompleteOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>completeOrder</servlet-name>
@@ -85,7 +85,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>orders</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetUserOrdersController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetUserOrdersController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>orders</servlet-name>
@@ -93,7 +93,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>order</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetOrderController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>order</servlet-name>
@@ -101,7 +101,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>deleteOrder</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.DeleteOrderController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.DeleteOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteOrder</servlet-name>
@@ -109,7 +109,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>deleteProduct</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.DeleteProductController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.DeleteProductController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteProduct</servlet-name>
@@ -117,7 +117,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>buyProducts</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.GetAllProductsToBuyController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.GetAllProductsToBuyController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>buyProducts</servlet-name>
@@ -125,7 +125,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.LoginController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -133,7 +133,7 @@
     </servlet-mapping>
     <filter>
         <filter-name>authenticationFilter</filter-name>
-        <filter-class>mate.academy.internetshop.web.filters.AuthenticationFilters</filter-class>
+        <filter-class>mate.academy.internet.shop.web.filters.AuthenticationFilters</filter-class>
         <init-param>
             <param-name>skipUrls</param-name>
             <param-value>/login;/registration;/injectData;</param-value>
@@ -145,7 +145,7 @@
     </filter-mapping>
     <servlet>
         <servlet-name>logoutController</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.LogoutController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.LogoutController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>logoutController</servlet-name>
@@ -153,7 +153,7 @@
     </servlet-mapping>
     <filter>
         <filter-name>authorisationFilter</filter-name>
-        <filter-class>mate.academy.internetshop.web.filters.AuthorisationFilter</filter-class>
+        <filter-class>mate.academy.internet.shop.web.filters.AuthorisationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authorisationFilter</filter-name>
@@ -161,7 +161,7 @@
     </filter-mapping>
     <servlet>
         <servlet-name>injectData</servlet-name>
-        <servlet-class>mate.academy.internetshop.controller.InjectDataController</servlet-class>
+        <servlet-class>mate.academy.internet.shop.controller.InjectDataController</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

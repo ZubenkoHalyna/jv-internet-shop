@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="order" scope="request" type="mate.academy.internet.shop.model.Order"/>
+<jsp:useBean id="user" scope="request" type="mate.academy.internet.shop.model.User"/>
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -49,7 +51,7 @@
         </c:forEach>
     </table>
     <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/index" class="btn btn-outline-secondary">Menu</a>
+        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
         <a href="${pageContext.request.contextPath}/orders" class="btn btn-outline-secondary">Orders</a>
         <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"
            class="btn btn-outline-secondary">Delete</a>
