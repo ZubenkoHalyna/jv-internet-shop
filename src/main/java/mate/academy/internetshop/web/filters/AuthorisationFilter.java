@@ -26,7 +26,7 @@ public class AuthorisationFilter implements Filter {
     private Map<String, List<RoleName>> protectedUrlsStart;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         protectedUrlsStart = new HashMap<>();
         protectedUrlsStart.put("/users", List.of(RoleName.ADMIN));
         protectedUrlsStart.put("/user/delete", List.of(RoleName.ADMIN));

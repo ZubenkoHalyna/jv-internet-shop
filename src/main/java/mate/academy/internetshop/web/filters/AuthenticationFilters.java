@@ -17,7 +17,7 @@ public class AuthenticationFilters implements Filter {
     private List<String> skipUrls;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         skipUrls = Arrays.asList(filterConfig.getInitParameter("skipUrls").split(";"));
     }
 
