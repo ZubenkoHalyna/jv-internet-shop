@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="orders" scope="request" type="java.util.List<mate.academy.internet.shop.model.Order>"/>
-<jsp:useBean id="user" scope="request" type="mate.academy.internet.shop.model.User"/>
+<jsp:useBean id="orders" scope="request" type="java.util.List<com.dev.internet.shop.model.Order>"/>
+<jsp:useBean id="user" scope="request" type="com.dev.internet.shop.model.User"/>
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"

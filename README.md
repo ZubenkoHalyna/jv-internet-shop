@@ -21,3 +21,21 @@ shopping cart, complete orders, view and edit their list of orders.
 <li>HTML</li>
 <li>CSS</li>
 <li>Bootstrap</li>
+
+<h1>Set up guide</h1>
+
+1. Install MySQL if you don't have it and start the server;
+
+2. Run src.main.resources.init_db.sql script on your MySQL server.
+
+3. Open the project in your IDE;
+
+4. Set correct username and password to your database at src.main.java.com.dev.internet.shop.util.ConnectionUtil class.
+
+5. Change a path to log file in src.main.resources.log4j.properties;
+
+6. Add Local Tomcat configuration using internet-shop:war exploded artifact;
+
+7. Run the project.
+
+8. Visit http://localhost:8080/internet_shop_war_exploded/injectData to add test data to database.

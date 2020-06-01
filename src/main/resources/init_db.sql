@@ -1,3 +1,7 @@
+CREATE DATABASE internet_shop;
+
+USE internet_shop;
+
 CREATE TABLE products (
     product_id BIGINT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
