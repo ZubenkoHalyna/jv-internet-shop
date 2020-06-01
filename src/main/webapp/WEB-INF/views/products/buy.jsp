@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="products" scope="request" type="java.util.List<com.dev.internet.shop.model.Product>"/>
 <html>
 <head>
     <title>Buy</title>
@@ -37,6 +38,6 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/index" class="btn btn-primary">Menu</a>
+    <a href="${pageContext.request.contextPath}/" class="btn btn-primary">Menu</a>
 </body>
 </html>

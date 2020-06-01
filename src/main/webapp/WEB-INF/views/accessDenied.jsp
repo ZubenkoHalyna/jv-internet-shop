@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>Sorry! Access to this page is denied.</h1>
-    <a href="${pageContext.request.contextPath}/index" class="btn btn-primary mt-1">Menu</a>
+    <a href="${pageContext.request.contextPath}/" class="btn btn-primary mt-1">Menu</a>
 </body>
 </html>
