@@ -7,13 +7,14 @@
           crossorigin="anonymous">
     <title>Internet shop</title>
 </head>
-<body>
+<body class="container">
+    <jsp:include page="menu.jsp"/>
     <c:if test="${user == null}">
-        Admin user already exists, password is empty
+        <h2>Admin user already exists, password is empty</h2>
         <br/>
     </c:if>
     <c:if test="${user != null}">
-        <h1>Test data was added</h1>
+        <h2>Test data was added</h2>
         Added user with login "<c:out value="${user.login}"/>" and empty password
         <br/>
         Added list of products
@@ -23,6 +24,5 @@
             </li>
         </c:forEach>
     </c:if>
-    <a href="${pageContext.request.contextPath}/login" class="btn btn-primary mt-1">Login</a>
 </body>
 </html>

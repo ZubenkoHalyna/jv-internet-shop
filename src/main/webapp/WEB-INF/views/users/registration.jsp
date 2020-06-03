@@ -7,8 +7,9 @@
           crossorigin="anonymous">
     <title>Registration</title>
 </head>
-<body>
-    <h1>Hello! Please provide your user details.</h1>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
+    <h2>Hello! Please provide your user details.</h2>
     <c:if test="${msg != null}">
         <div class="alert alert-danger"> ${msg} </div>
     </c:if>

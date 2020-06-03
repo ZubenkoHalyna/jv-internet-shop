@@ -3,12 +3,13 @@
 <jsp:useBean id="products" scope="request" type="java.util.List<com.dev.internet.shop.model.Product>"/>
 <html>
 <head>
-    <title>Products</title>
+    <title>All products</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 </head>
-<body>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
     <h1>Products:</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
@@ -38,9 +39,6 @@
             </tr>
         </c:forEach>
     </table>
-    <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
-        <a href="${pageContext.request.contextPath}/product/add" class="btn btn-primary">Add</a>
-    </div>
+    <a href="${pageContext.request.contextPath}/product/add" class="btn btn-primary mt-1">Add</a>
 </body>
 </html>

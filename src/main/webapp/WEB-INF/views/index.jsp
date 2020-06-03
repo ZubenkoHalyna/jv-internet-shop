@@ -6,18 +6,8 @@
               crossorigin="anonymous">
         <title>Internet shop</title>
     </head>
-    <body>
-        <h1>Menu</h1>
-        <a href="${pageContext.request.contextPath}/users">Users</a>
-        <br/>
-        <a href="${pageContext.request.contextPath}/products">Products</a>
-        <br/>
-        <a href="${pageContext.request.contextPath}/buyProducts">Buy</a>
-        <br/>
-        <a href="${pageContext.request.contextPath}/shoppingcart">Shopping cart</a>
-        <br/>
-        <a href="${pageContext.request.contextPath}/orders">Orders</a>
-        <br/>
-        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary mt-1">Log out</a>
+    <body class="container">
+        <jsp:include page="menu.jsp"/>
+        <h1>Welcome to internet shop!</h1>
     </body>
 </html>

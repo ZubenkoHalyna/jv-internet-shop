@@ -8,8 +8,9 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 </head>
-<body>
-    <h1>Products in shopping cart</h1>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
+    <h1>Shopping cart</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -38,10 +39,6 @@
             </tr>
         </c:forEach>
     </table>
-
-    <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/buyProducts" class="btn btn-outline-secondary">Buy</a>
-        <a href="${pageContext.request.contextPath}/order/complete" class="btn btn-primary">Complete order</a>
-    </div>
+    <a href="${pageContext.request.contextPath}/order/complete" class="btn btn-primary mt-1">Complete order</a>
 </body>
 </html>

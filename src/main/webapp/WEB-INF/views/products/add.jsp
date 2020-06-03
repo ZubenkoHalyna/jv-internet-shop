@@ -6,7 +6,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 </head>
-<body>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
     <form method="post" action="${pageContext.request.contextPath}/product/add">
         <div class="form-group">
             <label for="name">Name</label>

@@ -9,7 +9,8 @@
           crossorigin="anonymous">
     <title>Order</title>
 </head>
-<body>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
     <h1>Order details</h1>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -27,7 +28,7 @@
             <c:out value="${user.name}"/>
         </div>
     </div>
-    <h2>Order products:</h2>
+    <h2>Order products</h2>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -50,11 +51,7 @@
             </tr>
         </c:forEach>
     </table>
-    <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
-        <a href="${pageContext.request.contextPath}/orders" class="btn btn-outline-secondary">Orders</a>
         <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"
-           class="btn btn-outline-secondary">Delete</a>
-    </div>
+           class="btn btn-outline-secondary mt-1">Delete</a>
 </body>
 </html>
