@@ -6,8 +6,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 </head>
-<body>
-    <h1>Sorry! Access to this page is denied.</h1>
-    <a href="${pageContext.request.contextPath}/" class="btn btn-primary mt-1">Menu</a>
+<body class="container">
+    <jsp:include page="menu.jsp"/>
+    <h1>Sorry! Access to this page is denied for you.</h1>
 </body>
 </html>

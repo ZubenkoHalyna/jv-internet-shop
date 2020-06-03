@@ -9,8 +9,9 @@
           crossorigin="anonymous">
     <title>Orders</title>
 </head>
-<body>
-    <h1>Orders:</h1>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
+    <h1>Orders</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -43,6 +44,5 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
 </body>
 </html>

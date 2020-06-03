@@ -8,16 +8,17 @@
           crossorigin="anonymous">
     <title>Users</title>
 </head>
-<body>
-    <h1>All users:</h1>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
+    <h1>All users</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Login</th>
-                <th>Delete</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Login</th>
+            <th>Delete</th>
+        </tr>
         </thead>
         <c:forEach var="user" items="${users}">
             <tr>
@@ -36,9 +37,6 @@
             </tr>
         </c:forEach>
     </table>
-    <div class="btn-group mt-1">
-        <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Menu</a>
-        <a href="${pageContext.request.contextPath}/registration" class="btn btn-primary">Add</a>
-    </div>
+    <a href="${pageContext.request.contextPath}/registration" class="btn btn-primary mt-1">Add</a>
 </body>
 </html>

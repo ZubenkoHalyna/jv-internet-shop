@@ -8,8 +8,9 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 </head>
-<body>
-    <h1>Products:</h1>
+<body class="container">
+    <jsp:include page="../menu.jsp"/>
+    <h1>Products</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -38,6 +39,5 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/" class="btn btn-primary">Menu</a>
 </body>
 </html>
